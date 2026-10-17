@@ -14,8 +14,11 @@ uses: classroom-resources/autograding-python-grader@v1
 uses: cs-plus-plus/autograding-python-grader@v1
 ```
 
-Inputs, outputs and results are identical to `classroom-resources/autograding-python-grader@v1`. The code is the original v1 release; this
-fork changes only the action runtime (now Docker (unchanged)) and the action's name and author.
+Inputs, outputs and results are identical to `classroom-resources/autograding-python-grader@v1`. The code is the original v1 release. This
+fork changes the action's name and author, and one line of the `Dockerfile`: the base image moves from
+`python:3.11.2-slim` to `python:3.11-slim-bookworm`. The original image is Debian 11, whose security
+packages are no longer served, so its `apt-get install jq` step now fails and the action cannot build.
+Python stays on 3.11.
 Issues and security reports: [open an issue](https://github.com/cs-plus-plus/autograding-python-grader/issues) or email
 kevin@csplusplus.com.
 
